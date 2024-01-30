@@ -579,7 +579,7 @@ var insertForm95736832 = function() {
 '    <div class="section true-impact">' + 
 '      <h3>Increase My Impact</h3>' + 
 '      <div class="field checkbox true-impact" >' + 
-'<label for="true-impact"><input id="true-impact" name="true-impact" type="checkbox" maxlength="255"></input><span class="label">Add [amount] to help cover our transaction fees</span></label>' + 
+'<label for="true-impact"><input id="true-impact" name="true-impact" type="checkbox" maxlength="255"></input><span class="label">Yes! Add [amount] to help offset bank fees</span></label>' + 
 '</div>' + 
 '' + 
 '</div>' + 
@@ -599,7 +599,7 @@ var insertForm95736832 = function() {
 '' +  '';var successHtml95736832 = '<div class=\'donation-success\'>' +
                                                        '  <h2>Thank You for Registering for the Mizuna Dinner!</h2>' +
                                                        '  <p>Your registration for Mile High 360\u0026#39;s Mizuna Dinner has been successfully processed. We look forward to seeing you there!</p>' + 
-                                                        '\u003cdiv class=\"social-media-buttons\" style=\"margin-top:10px;\"\u003e\u003cdiv class=\"fb-like\" data-href=\"https://facebook.com/milehigh360denver\" data-layout=\"button_count\" data-show-faces=\"true\" style=\"padding-right: 10px;\" data-action=\"like\" \u003e\u003c/div\u003e\u003cdiv id=\"facebookShareOnly\" class=\"fb-share-button\" data-href=\"https://facebook.com/milehigh360denver\" data-layout=\"button_count\"\u003e\u003c/div\u003e\u003cscript type=\u0027text/javascript\u0027\u003edocument.getElementById(\u0027facebookShareOnly\u0027).setAttribute(\u0027data-href\u0027, window.location.href);\u003c/script\u003e\u003c/div\u003e  \u003cdiv id=\"fb-root\"\u003e\u003c/div\u003e \u003cscript\u003e(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = \"//connect.facebook.net/en_US/sdk.js#xfbml=1\u0026version=v2.8\"; fjs.parentNode.insertBefore(js, fjs); }(document, \u0027script\u0027, \u0027facebook-jssdk\u0027));\u003c/script\u003e \u003cdiv class=\"additional-tickets\" style=\"margin-top: 10px;\"\u003e\u003cbutton type=\"button\" onclick=\"javascript:location.reload()\"\u003ePurchase Additional Tickets\u003c/button\u003e\u003c/div\u003e' + 
+                                                        '\u003cdiv class=\"social-media-buttons\" style=\"margin-top:10px;\"\u003e\u003cdiv class=\"fb-like\" data-href=\"https://facebook.com/milehigh360denver\" data-layout=\"button_count\" data-show-faces=\"true\" style=\"padding-right: 10px;\" data-action=\"like\" \u003e\u003c/div\u003e\u003cdiv id=\"facebookShareOnly\" class=\"fb-share-button\" data-href=\"https://facebook.com/milehigh360denver\" data-layout=\"button_count\"\u003e\u003c/div\u003e\u003cscript type=\u0027text/javascript\u0027\u003edocument.getElementById(\u0027facebookShareOnly\u0027).setAttribute(\u0027data-href\u0027, window.location.href);\u003c/script\u003e\u003c/div\u003e  \u003cdiv id=\"fb-root\"\u003e\u003c/div\u003e \u003cscript\u003e(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = \"//connect.facebook.net/en_US/sdk.js#xfbml=1\u0026version=v2.8\"; fjs.parentNode.insertBefore(js, fjs); }(document, \u0027script\u0027, \u0027facebook-jssdk\u0027));\u003c/script\u003e \u003cdiv class=\"additional-tickets\" style=\"margin-top: 10px;\"\u003e\u003cbutton type=\"button\" onclick=\"javascript:location.reload()\"\u003e\u003c/button\u003e\u003c/div\u003e' + 
                                                         '</div>';( function($) {if (!Bloomerang.useDonationId('95736832')) { 
                                     html95736832 = '<p style="color: red">Only one donation or event registration form can be used on each page.</p>';
                                 }if (jQuery('#bloomerangForm95736832').length) {
@@ -622,22 +622,24 @@ var insertForm95736832 = function() {
                                         }
                                         Bloomerang.SpreedlyScriptLoaded = true;
                         
-                        Bloomerang.Util.IsPayPalVenmoEnabled = false;
-                             jQuery("#paypal-button-container").remove();
                     };
                     if (Bloomerang.paymentFormLoaded) {
                                             return false;
                                         }
                                         Bloomerang.paymentFormLoaded = true;
-                     jQuery('.registration-form .section.captcha').attr('style', 'display: none'); 
-                    
-                    Bloomerang.transactionFee = 0.3; 
-                    Bloomerang.transactionFeeRate = 0.032; 
-                    Bloomerang.transactionFeeEft = 0; 
-                    Bloomerang.transactionFeeRateEft = 0;
-                    Bloomerang.transactionFeePayPal = 0.49; 
-                    Bloomerang.transactionFeeRatePayPal = 0.032; 
-                    
+                       window.captchaLoadCallback = function() {
+                            Bloomerang.gRecaptchaLoaded = true;
+                        };
+                        Bloomerang.Util.load('https://www.google.com/recaptcha/api.js?onload=captchaLoadCallback&render=explicit',
+                            function() { return Bloomerang.gRecaptchaLoaded; },
+                            function() {
+                                jQuery('.section.captcha').removeAttr('style');
+                                jQuery('form.registration-form').data('captcha-id', grecaptcha.render('captcha95736832', { 'sitekey' : '6Ld-5ZYUAAAAAK4cgvOSZG6_B_wLwd3j6Jt_G3nf' }));
+                            },
+                            true,
+                            true);
+                    Bloomerang.transactionFee = 0.3; Bloomerang.transactionFeeRate = 0.022; 
+                                    Bloomerang.transactionFeeEft = 0; Bloomerang.transactionFeeRateEft = 0;
                     Bloomerang.useKey('pub_350c01a7-36bc-11e9-9f3d-0aa640fb8062');
 
         Bloomerang.Util.getRegistrationAmount = function() {
@@ -1087,7 +1089,7 @@ var insertForm95736832 = function() {
                         window.bloomerangLoadStarted = true;
                         var script = document.createElement('script');
                         script.type = 'text/javascript';
-                        script.src = 'https://crm.bloomerang.co/Content/Scripts/Api/Bloomerang-v2.js?nocache=1702307772';
+                        script.src = 'https://crm.bloomerang.co/Content/Scripts/Api/Bloomerang-v2.js?nocache=2022-02-09';
                         document.getElementsByTagName('head')[0].appendChild(script);
                         waitForBloomerangLoad(function() { Bloomerang.Util.requireJQueryValidation(function() { insertForm95736832(); })});
                     }
