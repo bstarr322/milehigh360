@@ -1,3 +1,4 @@
+
     var insertForm15536128 = function() {
         var html15536128 = '<style text=\'text/css\'>' + 
 '.registration-form label{color: #404040;' + 
@@ -139,6 +140,9 @@
 '</div>' + 
 '<div class="field radio 123560960 required" >' + 
 '<label for="123560960"><input id="123560960" name="registration-type" class="required" type="radio" value="1400.000000" maxlength="255" data-short-name="Foursome + Sponsorship" data-ticket-quantity="4" data-registration-type-value="123558913" data-non-deductible-amount="1240.000000"></input><span class="label">$1,400.00 - Foursome + Sponsorship: Registration for Four Golfers + Hole Contest Sponsor</span></label>' + 
+'</div>' + 
+'<div class="field radio 123648000 required" >' + 
+'<label for="123648000"><input id="123648000" name="registration-type" class="required" type="radio" value="2500.000000" maxlength="255" data-short-name="Foursome + Scholarship" data-ticket-quantity="4" data-registration-type-value="123645953" data-non-deductible-amount="1240.000000"></input><span class="label">$2,500.00 - Foursome + Scholarship: Registration for Four Golfers + Scholarship</span></label>' + 
 '</div>' + 
 '<div class="field radio cannot-attend required" >' + 
 '<label for="cannot-attend"><input id="cannot-attend" name="registration-type" class="required" type="radio" maxlength="255" data-short-name="Donation" data-registration-type-value="381958"></input><span class="label">Sorry, I can\'t attend, but I would like to show my support by making a donation</span></label>' + 
