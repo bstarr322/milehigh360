@@ -1,5 +1,4 @@
-
-    var insertForm15536128 = function() {
+var insertForm15536128 = function() {
         var html15536128 = '<style text=\'text/css\'>' + 
 '.registration-form label{color: #404040;' + 
 '                display: block;}' + 
@@ -142,7 +141,7 @@
 '<label for="123560960"><input id="123560960" name="registration-type" class="required" type="radio" value="1400.000000" maxlength="255" data-short-name="Foursome + Sponsorship" data-ticket-quantity="4" data-registration-type-value="123558913" data-non-deductible-amount="1240.000000"></input><span class="label">$1,400.00 - Foursome + Sponsorship: Registration for Four Golfers + Hole Contest Sponsor</span></label>' + 
 '</div>' + 
 '<div class="field radio 123648000 required" >' + 
-'<label for="123648000"><input id="123648000" name="registration-type" class="required" type="radio" value="2500.000000" maxlength="255" data-short-name="Foursome + Scholarship" data-ticket-quantity="4" data-registration-type-value="123645953" data-non-deductible-amount="1240.000000"></input><span class="label">$2,500.00 - Foursome + Scholarship: Registration for Four Golfers + Scholarship</span></label>' + 
+'<label for="123648000"><input id="123648000" name="registration-type" class="required" type="radio" value="2500.000000" maxlength="255" data-short-name="Scholarship Champion" data-ticket-quantity="4" data-registration-type-value="123645953" data-non-deductible-amount="1240.000000"></input><span class="label">$2,500.00 - Scholarship Champion: Scholarship Champion</span></label>' + 
 '</div>' + 
 '<div class="field radio cannot-attend required" >' + 
 '<label for="cannot-attend"><input id="cannot-attend" name="registration-type" class="required" type="radio" maxlength="255" data-short-name="Donation" data-registration-type-value="381958"></input><span class="label">Sorry, I can\'t attend, but I would like to show my support by making a donation</span></label>' + 
@@ -662,7 +661,17 @@
                                             return false;
                                         }
                                         Bloomerang.paymentFormLoaded = true;
-                     jQuery('.registration-form .section.captcha').attr('style', 'display: none'); 
+                       window.captchaLoadCallback = function() {
+                            Bloomerang.gRecaptchaLoaded = true;
+                        };
+                        Bloomerang.Util.load('https://www.google.com/recaptcha/api.js?onload=captchaLoadCallback&render=explicit',
+                            function() { return Bloomerang.gRecaptchaLoaded; },
+                            function() {
+                                jQuery('.section.captcha').removeAttr('style');
+                                jQuery('form.registration-form').data('captcha-id', grecaptcha.render('captcha15536128', { 'sitekey' : '6Ld-5ZYUAAAAAK4cgvOSZG6_B_wLwd3j6Jt_G3nf' }));
+                            },
+                            true,
+                            true);
                     
                     Bloomerang.transactionFee = 0.3; 
                     Bloomerang.transactionFeeRate = 0.032; 
@@ -1120,7 +1129,7 @@
                         window.bloomerangLoadStarted = true;
                         var script = document.createElement('script');
                         script.type = 'text/javascript';
-                        script.src = 'https://crm.bloomerang.co/Content/Scripts/Api/Bloomerang-v2.js?nocache=1712081942';
+                        script.src = 'https://crm.bloomerang.co/Content/Scripts/Api/Bloomerang-v2.js?nocache=1718376705';
                         document.getElementsByTagName('head')[0].appendChild(script);
                         waitForBloomerangLoad(function() { Bloomerang.Util.requireJQueryValidation(function() { insertForm15536128(); })});
                     }
